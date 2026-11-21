@@ -94,13 +94,19 @@ docker compose up --build
 This starts: Postgres (Temporal's persistence store), Temporal server, Temporal Web UI
 (`http://localhost:8080`), Redis, the API (`http://localhost:3000`), and the Temporal worker.
 
-Once everything is up:
+Once everything is up, hit the API with whichever tool you prefer — these are plain `GET`
+requests, so any of the following work:
 
-```bash
-curl "http://localhost:3000/api/hotels?city=delhi"
-curl "http://localhost:3000/api/hotels?city=delhi&minPrice=4000&maxPrice=6000"
-curl "http://localhost:3000/health"
-```
+- **Browser**: paste the URL directly into the address bar, e.g.
+  `http://localhost:3000/api/hotels?city=delhi`
+- **Postman**: import [`postman/TripareAI-Assignment.postman_collection.json`](postman/TripareAI-Assignment.postman_collection.json)
+  and click "Send" on any request (recommended — see [Postman collection](#postman-collection) below)
+- **curl**, if you prefer the terminal:
+  ```bash
+  curl "http://localhost:3000/api/hotels?city=delhi"
+  curl "http://localhost:3000/api/hotels?city=delhi&minPrice=4000&maxPrice=6000"
+  curl "http://localhost:3000/health"
+  ```
 
 To stop everything:
 
