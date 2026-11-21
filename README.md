@@ -70,8 +70,8 @@ the cache, and the same range filter is then applied once in memory for that sin
 Pass `fail=true` to either supplier mock endpoint to simulate that supplier being down
 (returns `503`), e.g. `GET /supplierA/hotels?city=delhi&fail=true`.
 
-Sample cities with seeded overlapping data: `delhi`, `mumbai`. Any other city (e.g. `goa`)
-returns an empty array.
+Sample cities with seeded overlapping data: `delhi`, `mumbai`, `bangalore`, `pune`, `jaipur`.
+Any other city (e.g. `goa`) returns an empty array.
 
 ### Sample response
 
