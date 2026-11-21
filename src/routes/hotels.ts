@@ -57,8 +57,6 @@ router.get('/hotels', async (req: Request, res: Response) => {
     const wantsFilter = hasMin || hasMax;
     const setKey = priceSetKey(city);
 
-    // If a filter is requested and we already have this city cached in Redis,
-    // do the range filtering entirely inside Redis via ZRANGEBYSCORE.
     if (wantsFilter && (await redis.exists(setKey))) {
       const names = await redis.zrangebyscore(setKey, minPrice ?? '-inf', maxPrice ?? '+inf');
       if (names.length === 0) {
@@ -69,9 +67,6 @@ router.get('/hotels', async (req: Request, res: Response) => {
       return res.json(hotels);
     }
 
-    // Cold path: no cache entry yet (or no filter applied) -> run the Temporal
-    // workflow to fetch + dedupe + select the cheapest offer per hotel, then
-    // persist the result into Redis for subsequent filtered reads.
     const result = await runAggregationWorkflow(city);
     await cacheHotels(city, result);
 
