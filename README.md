@@ -12,6 +12,23 @@ filtering implemented using Redis sorted sets.
 - Redis (cache + range filtering via sorted sets)
 - Docker Compose
 
+## Quick start
+
+Requires [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or Docker Engine +
+the Compose plugin) running, and these ports free on your machine: `3000`, `6379`, `7233`,
+`8080`, `5432`.
+
+```bash
+git clone https://github.com/y09e5hkumar/TripareAI-Assignment-.git
+cd TripareAI-Assignment-
+docker compose up --build
+```
+
+That's it — once the containers are up, `http://localhost:3000/api/hotels?city=delhi` is live.
+See [Running with Docker Compose](#running-with-docker-compose-recommended) below for what each
+service does and how to stop it, or [Running locally without Docker](#running-locally-without-docker)
+if you'd rather not use Docker at all.
+
 ## Architecture
 
 ```
